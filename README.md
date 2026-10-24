@@ -1,31 +1,39 @@
-# ShopSphere — student React project
+# ShopSphere
 
-ShopSphere is a small sample storefront made to practise core React concepts. The goal is readable code that is easy to change and debug, rather than lots of advanced abstractions.
+ShopSphere is a student-built React storefront project. I am using it to practise React components, state, forms, filtering, local storage, and a simple checkout flow.
 
 ## Features
 
-- Browse a small catalogue of sample products
-- Search by product name
-- Filter by category
-- Sort by price
-- Add products to a bag
-- Increase/decrease quantities and remove products
-- See the subtotal
-- Place a demo order (this clears the bag; no payment is taken)
-- Responsive layout for mobile and desktop
+- Product catalogue loaded from DummyJSON
+- Search, category filtering, and sorting
+- Responsive product cards
+- Add/remove cart items and change quantities
+- Favourites / saved items
+- Sign-in and create-account screens for the frontend demo
+- My Account dashboard with profile summary, saved items, and demo order history
+- Checkout form with UPI, card, and cash-on-delivery payment-method selection
+- Order summary and demo order confirmation
+- Cart, favourites, orders, and demo profile persist in the browser using localStorage
+- Loading, empty, and error states
 
-## Run locally
+## Run locally on Windows
 
-You need Node.js installed. Open a terminal in this folder and run:
+Open this folder in VS Code, then run:
 
-```bash
-npm install
-npm run dev
+```powershell
+npm.cmd install
+npm.cmd run dev
 ```
 
-On Windows PowerShell, `npm.cmd install` and `npm.cmd run dev` also work if the `npm` command is blocked by the execution policy. Open the local URL Vite prints, usually `http://localhost:5173`.
+Open the local URL printed by Vite (usually `http://localhost:5173`).
 
-## Folder structure
+To check a production build:
+
+```powershell
+npm.cmd run build
+```
+
+## Project structure
 
 ```text
 shopsphere-react/
@@ -33,28 +41,20 @@ shopsphere-react/
 ├── package.json
 ├── README.md
 └── src/
-    ├── main.jsx              # React entry point
-    ├── App.jsx               # sample data, state, filtering and cart logic
-    ├── styles.css            # page styles and responsive rules
+    ├── main.jsx
+    ├── App.jsx
+    ├── styles.css
     └── components/
-        ├── ProductCard.jsx   # displays one product
-        └── CartPanel.jsx     # displays items in the bag
+        ├── ProductCard.jsx
+        └── CartDrawer.jsx
 ```
 
-## Main concepts used
+## Important limitations
 
-- Components and JSX
-- Props (`product`, `onAdd`, and cart callbacks)
-- `useState` for search, filters, sort order, and cart items
-- `map`, `filter`, `find`, and `reduce`
-- Event handlers and controlled inputs
-- Conditional rendering for empty search results and empty cart
-- Basic CSS Grid, Flexbox, and media queries
+This is a frontend portfolio prototype. Product data comes from DummyJSON. The sign-in/sign-up flow is a UI demo; it does not verify credentials with a server and does not store passwords. Checkout records a demo order in the browser only. Payment methods are selectable previews, but no payment details are collected and no money is charged.
 
-## Notes
+For a real production store, this project still needs a backend API, database, secure authentication, server-side order validation, and a payment provider integration (for example, Razorpay or Stripe) with server-side verification. Never collect or process real payment details directly in a frontend-only app.
 
-- Product details are sample data in `src/App.jsx`, so the app does not rely on an API to start.
-- Product photos are loaded from Unsplash URLs and need an internet connection.
-- The cart only exists in React state. Refreshing the page clears it.
-- Checkout is a front-end demonstration only. There is no backend, account system, database, or payment integration.
-- This is a learning project, not a real shop. Update the sample data and design yourself as you learn more React.
+## Learning notes
+
+I have kept the code split into components and used descriptive function names so I can keep building on it while learning. This project is a work in progress.
